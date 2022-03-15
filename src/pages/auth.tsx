@@ -1,5 +1,11 @@
 import React from 'react';
+import Header from 'src/components/Header';
 
 export default function auth() {
-  return <div>auth</div>;
+  return (
+    <>
+      <Header />
+      <div>auth</div>
+    </>
+  );
 }
