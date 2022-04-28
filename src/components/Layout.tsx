@@ -1,5 +1,5 @@
 import React from 'react';
-import Footer from './Footer';
+import Bottom from './Bottom';
 import Header from './Header';
 import Navbar from './Navbar';
 
@@ -12,8 +12,8 @@ export default function Layout({ children }: Props) {
     <>
       <Header />
       <Navbar />
-      <main>{children}</main>
-      <Footer />
+      <main className={'p-8 h-full'}>{children}</main>
+      <Bottom />
     </>
   );
 }
