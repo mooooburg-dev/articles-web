@@ -1,19 +1,19 @@
 import Link from 'next/link';
 import React from 'react';
 
-export default function Navbar() {
+type Props = {
+  children?: any;
+};
+
+export default function Navbar({ children, ...args }: Props) {
   return (
-    <div>
-      <div className="z-10 w-full py-4 bg-blue-500">
-        <button className="ml-4 bg-orange-400">
+    <div className={`z-10 w-full bg-teal-500`}>
+      <div className={'navbarInner py-8 px-8'}>
+        <h1 className="text-2xl">
           <Link href="/">
-            <a>HOME</a>
+            <a>Reviewers</a>
           </Link>
-        </button>
-        <button className="ml-4">
-          <Link href="/profile">PROFILE</Link>
-        </button>
-        <button className="ml-4">CONTACT</button>
+        </h1>
       </div>
     </div>
   );
