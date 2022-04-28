@@ -12,7 +12,7 @@ export default function Layout({ children }: Props) {
     <>
       <Header />
       <Navbar />
-      <main className={'p-8 h-full'}>{children}</main>
+      <main className={'p-4 h-full'}>{children}</main>
       <Bottom />
     </>
   );

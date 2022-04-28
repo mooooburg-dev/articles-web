@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-const url: string = 'https://jsonplaceholder.typicode.com/posts';
+// const url: string = 'https://jsonplaceholder.typicode.com/posts';
+const url: string = '/reviews';
 
 export default function Index() {
   const [data, setData] = useState<any>(null);
@@ -17,6 +18,12 @@ export default function Index() {
       .catch((error) => setError(`error: ${error}`));
   };
 
+  const handleClick2 = () => {
+    fetch('/login')
+      .then((response) => response.json())
+      .then((json) => console.log(JSON.stringify(json)));
+  };
+
   if (error) {
     return <p>{error}</p>;
   }
@@ -26,6 +33,7 @@ export default function Index() {
   return (
     <div>
       <button onClick={handleClick}>데이터 가져오기</button>
+      <button onClick={handleClick2}>데이터 가져오기2</button>
       {data && (
         <ul>
           {data.map((post: any) => (
