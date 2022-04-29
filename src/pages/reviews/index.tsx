@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // const url: string = 'https://jsonplaceholder.typicode.com/posts';
-const url: string = '/reviews';
+const url: string = 'https://jsonplaceholder.typicode.com/posts';
 
 export default function Index() {
   const [data, setData] = useState<any>(null);
@@ -19,7 +19,7 @@ export default function Index() {
   };
 
   const handleClick2 = () => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    fetch('/login')
       .then((response) => response.json())
       .then((json) => console.log(JSON.stringify(json)));
   };
