@@ -35,22 +35,25 @@ export default function Reviews() {
   return (
     <div className="reviews vh-1">
       <div className="inner ">
+        <h3>#2030</h3>
         {data && (
-          <ul>
+          <ul className="mt-8">
             {data.map((post: any) => (
-              <Grid container spacing={2}>
-                <Grid item xs={4} sm={2}>
-                  <div>
-                    <img src="https://mui.com/static/ads-in-house/scaffoldhub.png"></img>
-                  </div>
+              <li className={'mb-8'}>
+                <Grid container spacing={2}>
+                  <Grid item xs={4} sm={2}>
+                    <div>
+                      <img src="https://mui.com/static/ads-in-house/scaffoldhub.png"></img>
+                    </div>
+                  </Grid>
+                  <Grid item xs={8} sm={10}>
+                    <div key={post.id}>
+                      <p className="font-bold text-teal-700 ">{post.title}</p>
+                      <p>{post.body}</p>
+                    </div>
+                  </Grid>
                 </Grid>
-                <Grid item xs={8} sm={10}>
-                  <div key={post.id} className={'mb-20'}>
-                    <p className="font-bold text-teal-700 ">{post.title}</p>
-                    <p>{post.body}</p>
-                  </div>
-                </Grid>
-              </Grid>
+              </li>
             ))}
           </ul>
         )}
