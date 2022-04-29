@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-// const url: string = 'https://jsonplaceholder.typicode.com/posts';
 const url: string = 'https://jsonplaceholder.typicode.com/posts';
 
 export default function Index() {
@@ -27,8 +26,6 @@ export default function Index() {
   if (error) {
     return <p>{error}</p>;
   }
-
-  console.log(data);
 
   return (
     <div>
