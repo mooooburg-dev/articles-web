@@ -11,7 +11,7 @@ export default function Navbar({ children, ...args }: Props) {
       <div className={'navbarInner max-w-6xl mx-auto p-4'}>
         <h1 className="text-2xl">
           <Link href="/">
-            <a>Reviewers</a>
+            <a>Reviewers..</a>
           </Link>
         </h1>
       </div>
