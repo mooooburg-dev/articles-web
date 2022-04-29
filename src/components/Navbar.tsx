@@ -8,7 +8,7 @@ type Props = {
 export default function Navbar({ children, ...args }: Props) {
   return (
     <div className={`z-10 w-full bg-teal-500`}>
-      <div className={'navbarInner p-4'}>
+      <div className={'navbarInner max-w-6xl mx-auto p-4'}>
         <h1 className="text-2xl">
           <Link href="/">
             <a>Reviewers</a>
