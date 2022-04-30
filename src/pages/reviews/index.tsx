@@ -42,26 +42,24 @@ export default function Reviews() {
               <li className={'mt-4 first:mt-4'}>
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={12}>
-                    <a href="www.naver.com">
-                      <div key={post.id} className="flex-row text-gray-400">
-                        <div className="flex">
-                          <span className="">{idx}.</span>
-                          <span className="ml-2 ">▲</span>
-                          <p className="ml-2 text-gray-800 font-bold">
-                            {post.title}
-                          </p>
-                          <span className="ml-2 ">(naver.com)</span>
-                        </div>
-                        <div className="ml-10 flex-row text-sm">
-                          <span className="">16 hits</span>
-                          <span className="ml-4 ">mooooburg</span>
-                          <span className="ml-4 ">1 month ago</span>
-                          <span className="ml-4">
-                            #프론트엔드 #백엔드 #React #Vue.js
-                          </span>
-                        </div>
+                    <div key={post.id} className="flex-row text-gray-400">
+                      <div className="flex">
+                        <span className="">{idx}.</span>
+                        <span className="ml-2 ">▲</span>
+                        <p className="ml-2 text-gray-800 font-bold">
+                          {post.title}
+                        </p>
+                        <span className="ml-2 ">(naver.com)</span>
                       </div>
-                    </a>
+                      <div className="ml-10 flex-row text-sm">
+                        <span className="">16 hits</span>
+                        <span className="ml-4 ">mooooburg</span>
+                        <span className="ml-4 ">1 month ago</span>
+                        <span className="ml-4">
+                          #프론트엔드 #백엔드 #React #Vue.js
+                        </span>
+                      </div>
+                    </div>
                   </Grid>
                 </Grid>
               </li>
