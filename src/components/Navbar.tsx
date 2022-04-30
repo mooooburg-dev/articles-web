@@ -9,8 +9,10 @@ type Props = {
 
 export default function Navbar({ children, ...args }: Props) {
   return (
-    <div className={`z-10 w-full bg-teal-500`}>
-      <div className={'navbarInner max-w-6xl mx-auto p-4'}>
+    <div className={`z-10 w-full bg-teal-400`}>
+      <div
+        className={'navbarInner max-w-6xl mx-auto h-12 flex align-middle pr-4'}
+      >
         <Grid container alignItems="center">
           <Grid item xs={2}>
             <IconButton
@@ -22,7 +24,9 @@ export default function Navbar({ children, ...args }: Props) {
             </IconButton>
           </Grid>
           <Grid item xs={10} className={'text-right'}>
-            Review | News | Relationship
+            <ul>
+              <li></li>
+            </ul>
           </Grid>
         </Grid>
       </div>

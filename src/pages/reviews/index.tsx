@@ -35,22 +35,33 @@ export default function Reviews() {
   return (
     <div className="reviews vh-1">
       <div className="inner ">
-        <h3>#2030</h3>
+        <h3>#Front-end</h3>
         {data && (
-          <ul className="mt-8">
-            {data.map((post: any) => (
-              <li className={'mb-8'}>
+          <ul className=":not(:first-child)::mt-10">
+            {data.map((post: any, idx: number) => (
+              <li className={'mt-4 first:mt-4'}>
                 <Grid container spacing={2}>
-                  <Grid item xs={4} sm={2}>
-                    <div>
-                      <img src="https://mui.com/static/ads-in-house/scaffoldhub.png"></img>
-                    </div>
-                  </Grid>
-                  <Grid item xs={8} sm={10}>
-                    <div key={post.id}>
-                      <p className="font-bold text-teal-700 ">{post.title}</p>
-                      <p>{post.body}</p>
-                    </div>
+                  <Grid item xs={12} sm={12}>
+                    <a href="www.naver.com">
+                      <div key={post.id} className="flex-row text-gray-400">
+                        <div className="flex">
+                          <span className="">{idx}.</span>
+                          <span className="ml-2 ">▲</span>
+                          <p className="ml-2 text-gray-800 font-bold">
+                            {post.title}
+                          </p>
+                          <span className="ml-2 ">(naver.com)</span>
+                        </div>
+                        <div className="ml-10 flex-row text-sm">
+                          <span className="">16 hits</span>
+                          <span className="ml-4 ">mooooburg</span>
+                          <span className="ml-4 ">1 month ago</span>
+                          <span className="ml-4">
+                            #프론트엔드 #백엔드 #React #Vue.js
+                          </span>
+                        </div>
+                      </div>
+                    </a>
                   </Grid>
                 </Grid>
               </li>
