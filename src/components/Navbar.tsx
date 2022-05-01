@@ -26,7 +26,11 @@ export default function Navbar({ children, ...args }: Props) {
           <Grid item xs={9} className={'text-right'}>
             <ul className="flex justify-end child:mx-2 text-sm font-bold">
               <li>
-                <span>ARTICLES</span>
+                <Link href={'/reviews'}>
+                  <a>
+                    <span>ARTICLES</span>
+                  </a>
+                </Link>
               </li>
               <li>
                 <span>SAVED</span>
@@ -37,9 +41,11 @@ export default function Navbar({ children, ...args }: Props) {
             </ul>
           </Grid>
           <Grid item xs={1} className={'text-right'}>
-            <IconButton color="inherit" component="span">
-              <Create />
-            </IconButton>
+            <Link href={'/create'}>
+              <IconButton color="inherit" component="span">
+                <Create />
+              </IconButton>
+            </Link>
           </Grid>
         </Grid>
       </div>
