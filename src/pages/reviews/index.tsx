@@ -1,4 +1,6 @@
-import { Button, Grid } from '@mui/material';
+import { Search } from '@mui/icons-material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Button, Grid, IconButton, TextField } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
 const url: string = 'https://jsonplaceholder.typicode.com/posts';
@@ -6,6 +8,8 @@ const url: string = 'https://jsonplaceholder.typicode.com/posts';
 export default function Reviews() {
   const [data, setData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+  const [searchEnabled, setSearchEnabled] = useState<boolean>(false);
+  const [searchTag, setSearchTag] = useState<string>('');
 
   const handleClick = () => {
     fetch(url)
@@ -28,6 +32,16 @@ export default function Reviews() {
     return <p>{error}</p>;
   }
 
+  const handleSearchClick = () => {
+    setSearchEnabled(!searchEnabled);
+  };
+
+  useEffect(() => {
+    if (searchEnabled) {
+    } else {
+    }
+  }, [searchEnabled]);
+
   useEffect(() => {
     handleClick();
   }, []);
@@ -35,7 +49,28 @@ export default function Reviews() {
   return (
     <div className="reviews vh-1">
       <div className="inner ">
-        <h3>#Front-end</h3>
+        <div>
+          {searchEnabled ? (
+            <div className="flex items-center">
+              <TextField
+                label="Search Tag"
+                id="outlined-size-small"
+                defaultValue="Front-end"
+                size="small"
+              />
+              <IconButton>
+                <Search fontSize="large" onClick={handleSearchClick} />
+              </IconButton>
+            </div>
+          ) : (
+            <div className="flex items-center" onClick={handleSearchClick}>
+              <h3>#Front-end</h3>
+              <IconButton aria-label="delete">
+                <Search fontSize="large" />
+              </IconButton>
+            </div>
+          )}
+        </div>
         {data && (
           <ul className=":not(:first-child)::mt-10">
             {data.map((post: any, idx: number) => (
