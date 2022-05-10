@@ -1,7 +1,6 @@
 import { Search } from '@mui/icons-material';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { Button, Grid, IconButton, TextField } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import { Grid, IconButton, TextField } from '@mui/material';
+import React, { useCallback, useEffect, useState } from 'react';
 
 const url: string = 'https://jsonplaceholder.typicode.com/posts';
 
@@ -22,18 +21,12 @@ export default function Reviews() {
       .catch((error) => setError(`error: ${error}`));
   };
 
-  const handleClick2 = () => {
-    fetch('/login')
-      .then((response) => response.json())
-      .then((json) => console.log(JSON.stringify(json)));
-  };
-
-  if (error) {
-    return <p>{error}</p>;
-  }
-
-  const handleSearchClick = () => {
+  const handleSearchClick = useCallback(() => {
     setSearchEnabled(!searchEnabled);
+  }, [setSearchEnabled, searchEnabled]);
+
+  const handleSearchBlur = () => {
+    setSearchEnabled(false);
   };
 
   useEffect(() => {
@@ -57,6 +50,7 @@ export default function Reviews() {
                 id="outlined-size-small"
                 defaultValue="Front-end"
                 size="small"
+                onBlur={handleSearchBlur}
               />
               <IconButton>
                 <Search fontSize="large" onClick={handleSearchClick} />
@@ -81,7 +75,7 @@ export default function Reviews() {
                       <div className="flex">
                         <span className="">{idx}.</span>
                         <span className="ml-2 ">▲</span>
-                        <p className="ml-2 text-gray-800 font-bold">
+                        <p className="ml-2 font-bold text-gray-800">
                           {post.title}
                         </p>
                         <span className="ml-2 ">(naver.com)</span>
