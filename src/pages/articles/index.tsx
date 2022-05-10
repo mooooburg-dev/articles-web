@@ -40,9 +40,9 @@ export default function Reviews() {
   }, []);
 
   return (
-    <div className="reviews vh-1">
+    <div className="articles vh-1">
       <div className="inner ">
-        <div>
+        <div className="search-container">
           {searchEnabled ? (
             <div className="flex items-center">
               <TextField
@@ -58,7 +58,7 @@ export default function Reviews() {
             </div>
           ) : (
             <div className="flex items-center" onClick={handleSearchClick}>
-              <h3>#Front-end</h3>
+              <h2># Front-end</h2>
               <IconButton aria-label="delete">
                 <Search fontSize="large" />
               </IconButton>
@@ -66,34 +66,36 @@ export default function Reviews() {
           )}
         </div>
         {data && (
-          <ul className=":not(:first-child)::mt-10">
-            {data.map((post: any, idx: number) => (
-              <li className={'mt-4 first:mt-4'}>
-                <Grid container spacing={2}>
-                  <Grid item xs={12} sm={12}>
-                    <div key={post.id} className="flex-row text-gray-400">
-                      <div className="flex">
-                        <span className="">{idx}.</span>
-                        <span className="ml-2 ">▲</span>
-                        <p className="ml-2 font-bold text-gray-800">
-                          {post.title}
-                        </p>
-                        <span className="ml-2 ">(naver.com)</span>
+          <div className="articles-data mt-4">
+            <ul className=":not(:first-child)::mt-10">
+              {data.map((post: any, idx: number) => (
+                <li className={'mt-4 first:mt-4'}>
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} sm={12}>
+                      <div key={post.id} className="flex-row text-gray-400">
+                        <div className="flex">
+                          <span className="">{idx}.</span>
+                          <span className="ml-2 ">▲</span>
+                          <p className="ml-2 font-bold text-gray-800">
+                            {post.title}
+                          </p>
+                          <span className="ml-2 ">(naver.com)</span>
+                        </div>
+                        <div className="ml-10 flex-row text-sm">
+                          <span className="">16 hits</span>
+                          <span className="ml-4 ">mooooburg</span>
+                          <span className="ml-4 ">1 month ago</span>
+                          <span className="ml-4">
+                            #프론트엔드 #백엔드 #React #Vue.js
+                          </span>
+                        </div>
                       </div>
-                      <div className="ml-10 flex-row text-sm">
-                        <span className="">16 hits</span>
-                        <span className="ml-4 ">mooooburg</span>
-                        <span className="ml-4 ">1 month ago</span>
-                        <span className="ml-4">
-                          #프론트엔드 #백엔드 #React #Vue.js
-                        </span>
-                      </div>
-                    </div>
+                    </Grid>
                   </Grid>
-                </Grid>
-              </li>
-            ))}
-          </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
     </div>
