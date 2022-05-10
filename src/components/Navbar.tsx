@@ -11,7 +11,7 @@ export default function Navbar({ children, ...args }: Props) {
   return (
     <div className={`z-10 w-full bg-teal-400`}>
       <div
-        className={'navbarInner max-w-6xl mx-auto h-12 flex align-middle pr-4'}
+        className={'navbarInner mx-auto flex h-12 max-w-6xl pr-4 align-middle'}
       >
         <Grid container alignItems="center">
           <Grid item xs={2} className="xs:block md:hidden">
@@ -24,9 +24,9 @@ export default function Navbar({ children, ...args }: Props) {
             </IconButton>
           </Grid>
           <Grid item xs={9} className={'text-right'}>
-            <ul className="flex justify-end child:mx-2 text-sm font-bold">
+            <ul className="flex justify-end text-sm font-bold child:mx-2">
               <li>
-                <Link href={'/reviews'}>
+                <Link href={'/articles'}>
                   <a>
                     <span>ARTICLES</span>
                   </a>
