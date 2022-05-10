@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function Bottom() {
   return (
-    <div className="bottom fixed bottom-0 bg-teal-400 w-full">
-      <div className="inner relative max-w-6xl mx-auto my-auto p-4">Bottom</div>
+    <div className="bottom w-full bg-teal-400">
+      <div className="inner relative mx-auto my-auto max-w-6xl p-4">Bottom</div>
     </div>
   );
 }
