@@ -33,10 +33,18 @@ export default function Navbar({ children, ...args }: Props) {
                 </Link>
               </li>
               <li>
-                <span>SAVED</span>
+                <Link href={'/saved'}>
+                  <a>
+                    <span>SAVED</span>
+                  </a>
+                </Link>
               </li>
               <li>
-                <span>SETTINGS</span>
+                <Link href={'/settings'}>
+                  <a>
+                    <span>SETTINGS</span>
+                  </a>
+                </Link>
               </li>
             </ul>
           </Grid>
