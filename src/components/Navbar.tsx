@@ -23,7 +23,7 @@ export default function Navbar({ children, ...args }: Props) {
               <Menu />
             </IconButton>
           </Grid>
-          <Grid item xs={9} className={'text-right'}>
+          <Grid item xs={9} md={12} className={'flex items-center justify-end'}>
             <ul className="flex justify-end text-sm font-bold child:mx-2">
               <li>
                 <Link href={'/articles'}>
@@ -47,8 +47,6 @@ export default function Navbar({ children, ...args }: Props) {
                 </Link>
               </li>
             </ul>
-          </Grid>
-          <Grid item xs={1} className={'text-right'}>
             <Link href={'/create'}>
               <IconButton color="inherit" component="span">
                 <Create />
