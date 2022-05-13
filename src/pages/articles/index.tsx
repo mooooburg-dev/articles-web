@@ -69,16 +69,18 @@ export default function Reviews() {
           <div className="articles-data mt-4">
             <ul className=":not(:first-child)::mt-10">
               {data.map((post: any, idx: number) => (
-                <li className={'mt-4 first:mt-4'}>
+                <li className={'mt-4 first:mt-4'} key={idx}>
                   <Grid container spacing={2}>
                     <Grid item xs={12} sm={12}>
                       <div key={post.id} className="flex-row text-gray-400">
                         <div className="flex">
                           <span className="">{idx}.</span>
                           <span className="ml-2 ">▲</span>
-                          <p className="ml-2 font-bold text-gray-800">
-                            {post.title}
-                          </p>
+                          <a href={post.url} target="_blank">
+                            <p className="ml-2 font-bold text-gray-800">
+                              {post.title}
+                            </p>
+                          </a>
                           <span className="ml-2 ">(naver.com)</span>
                         </div>
                         <div className="ml-10 flex-row text-sm">
