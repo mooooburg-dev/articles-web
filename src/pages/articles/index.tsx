@@ -1,4 +1,4 @@
-import { Search } from '@mui/icons-material';
+import { AssignmentTurnedInOutlined, Search } from '@mui/icons-material';
 import { Grid, IconButton, TextField } from '@mui/material';
 import React, { useCallback, useEffect, useState } from 'react';
 
@@ -28,6 +28,8 @@ export default function Reviews() {
   const handleSearchBlur = () => {
     setSearchEnabled(false);
   };
+
+  const handleClipboardClick = () => {};
 
   useEffect(() => {
     if (searchEnabled) {
@@ -73,11 +75,18 @@ export default function Reviews() {
                   <Grid container spacing={2}>
                     <Grid item xs={12} sm={12}>
                       <div key={post.id} className="flex-row text-gray-400">
-                        <div className="flex">
+                        <div className="flex items-center">
                           <span className="">{idx}.</span>
                           <span className="ml-2 ">▲</span>
+                          <IconButton
+                            aria-label="assignment-turned-in"
+                            color="success"
+                            onClick={handleClipboardClick}
+                          >
+                            <AssignmentTurnedInOutlined />
+                          </IconButton>
                           <a href={post.url} target="_blank">
-                            <p className="ml-2 font-bold text-gray-800">
+                            <p className="font-bold text-gray-800">
                               {post.title}
                             </p>
                           </a>
