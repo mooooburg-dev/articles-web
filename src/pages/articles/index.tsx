@@ -75,13 +75,14 @@ export default function Reviews() {
                   <Grid container spacing={2}>
                     <Grid item xs={12} sm={12}>
                       <div key={post.id} className="flex-row text-gray-400">
-                        <div className="flex items-center">
+                        <div className="flex items-start">
                           <span className="">{idx}.</span>
                           <span className="ml-2 ">▲</span>
                           <IconButton
                             aria-label="assignment-turned-in"
                             color="success"
                             onClick={handleClipboardClick}
+                            style={{ paddingTop: 0 }}
                           >
                             <AssignmentTurnedInOutlined />
                           </IconButton>
