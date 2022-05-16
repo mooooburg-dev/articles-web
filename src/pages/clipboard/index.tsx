@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default function Saved() {
-  return <div>Saved</div>;
+  return <h2>Clipboard</h2>;
 }
