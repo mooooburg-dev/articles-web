@@ -1,4 +1,4 @@
-import { Create, Menu } from '@mui/icons-material';
+import { Create, Login, Menu, Settings } from '@mui/icons-material';
 import { Button, Grid, IconButton } from '@mui/material';
 import Link from 'next/link';
 import React from 'react';
@@ -13,17 +13,17 @@ export default function Navbar({ children, ...args }: Props) {
       <div
         className={'navbarInner mx-auto flex h-12 max-w-6xl pr-4 align-middle'}
       >
-        <Grid container alignItems="center">
-          <Grid item xs={2} className="xs:block md:hidden">
+        <Grid container className="column flex justify-between">
+          <Grid item>
             <IconButton
               color="inherit"
-              aria-label="upload picture"
               component="span"
+              className="xs:block sm:hidden"
             >
               <Menu />
             </IconButton>
           </Grid>
-          <Grid item xs={9} md={12} className={'flex items-center justify-end'}>
+          <Grid item className={'flex items-center justify-end'}>
             <ul className="flex justify-end text-sm font-bold child:mx-2">
               <li>
                 <Link href={'/articles'}>
@@ -33,20 +33,23 @@ export default function Navbar({ children, ...args }: Props) {
                 </Link>
               </li>
               <li>
-                <Link href={'/saved'}>
+                <Link href={'/clipboard'}>
                   <a>
-                    <span>SAVED</span>
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href={'/settings'}>
-                  <a>
-                    <span>SETTINGS</span>
+                    <span>CLIPBOARD</span>
                   </a>
                 </Link>
               </li>
             </ul>
+            <Link href={'/login'}>
+              <IconButton color="inherit" component="span">
+                <Login />
+              </IconButton>
+            </Link>
+            <Link href={'/settings'}>
+              <IconButton color="inherit" component="span">
+                <Settings />
+              </IconButton>
+            </Link>
             <Link href={'/create'}>
               <IconButton color="inherit" component="span">
                 <Create />
