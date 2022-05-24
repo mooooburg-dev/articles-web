@@ -7,7 +7,7 @@ const url: string = 'https://jsonplaceholder.typicode.com/posts';
 export default function Reviews() {
   const [data, setData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
-  const [searchEnabled, setSearchEnabled] = useState<boolean>(false);
+  const [searchMode, setSearchMode] = useState<boolean>(false);
   const [searchTag, setSearchTag] = useState<string>('');
 
   const handleClick = () => {
@@ -21,21 +21,25 @@ export default function Reviews() {
       .catch((error) => setError(`error: ${error}`));
   };
 
+  const handleSearchTagChange = (e: any) => {
+    setSearchTag(e.target.value);
+  };
+
   const handleSearchClick = useCallback(() => {
-    setSearchEnabled(!searchEnabled);
-  }, [setSearchEnabled, searchEnabled]);
+    setSearchMode(!searchMode);
+  }, [setSearchMode, searchMode]);
 
   const handleSearchBlur = () => {
-    setSearchEnabled(false);
+    setSearchMode(false);
   };
 
   const handleClipboardClick = () => {};
 
   useEffect(() => {
-    if (searchEnabled) {
+    if (searchMode) {
     } else {
     }
-  }, [searchEnabled]);
+  }, [searchMode]);
 
   useEffect(() => {
     handleClick();
@@ -45,7 +49,7 @@ export default function Reviews() {
     <div className="articles vh-1">
       <div className="inner ">
         <div className="search-container">
-          {searchEnabled ? (
+          {searchMode ? (
             <div className="flex items-center">
               <TextField
                 label="Search Tag"
@@ -53,6 +57,7 @@ export default function Reviews() {
                 defaultValue="Front-end"
                 size="small"
                 onBlur={handleSearchBlur}
+                onChange={handleSearchTagChange}
               />
               <IconButton>
                 <Search fontSize="large" onClick={handleSearchClick} />
@@ -97,7 +102,7 @@ export default function Reviews() {
                           <span className="">16 hits</span>
                           <span className="ml-4 ">mooooburg</span>
                           <span className="ml-4 ">1 month ago</span>
-                          <span className="ml-4">
+                          <span className="ml-4 break-words">
                             #프론트엔드 #백엔드 #React #Vue.js
                           </span>
                         </div>
