@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 
 const url: string = 'https://jsonplaceholder.typicode.com/posts';
 
-export default function Reviews() {
+export default function Articles() {
   const [data, setData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
   const [searchMode, setSearchMode] = useState<boolean>(false);
