@@ -101,7 +101,7 @@ export default function Articles() {
                         <div className="ml-10 flex-row text-sm">
                           <span className="">16 hits</span>
                           <span className="ml-4 ">mooooburg</span>
-                          <span className="ml-4 ">1 month ago</span>
+                          <span className="ml-4 ">2months ago</span>
                           <span className="ml-4 break-words">
                             #프론트엔드 #백엔드 #React #Vue.js
                           </span>
