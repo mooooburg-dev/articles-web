@@ -84,27 +84,31 @@ export default function Articles() {
                           <span className="">{idx}.</span>
                           <span className="ml-2 ">▲</span>
                           <IconButton
+                            className="pt-0 pr-1"
                             aria-label="assignment-turned-in"
                             color="success"
                             onClick={handleClipboardClick}
-                            style={{ paddingTop: 0 }}
                           >
                             <AssignmentTurnedInOutlined />
                           </IconButton>
-                          <a href={post.url} target="_blank">
-                            <p className="font-bold text-gray-800">
-                              {post.title}
-                            </p>
-                          </a>
-                          <span className="ml-2 ">(naver.com)</span>
-                        </div>
-                        <div className="ml-10 flex-row text-sm">
-                          <span className="">16 hits</span>
-                          <span className="ml-4 ">mooooburg</span>
-                          <span className="ml-4 ">2months ago</span>
-                          <span className="ml-4 break-words">
-                            #프론트엔드 #백엔드 #React #Vue.js
-                          </span>
+                          <div>
+                            <div className="flex">
+                              <a href={post.url} target="_blank">
+                                <p className="font-bold text-gray-800">
+                                  {post.title}
+                                </p>
+                              </a>
+                              <span className="ml-2 ">(naver.com)</span>
+                            </div>
+                            <div className="flex-row text-sm">
+                              <span className="">16 hits</span>
+                              <span className="ml-4">mooooburg</span>
+                              <span className="ml-4">2months ago</span>
+                              <span className="ml-4 break-words">
+                                #프론트엔드 #백엔드 #React #Vue.js
+                              </span>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </Grid>
