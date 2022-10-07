@@ -83,14 +83,16 @@ export default function Articles() {
                         <div className="flex items-start">
                           <span>{idx}.</span>
                           <span className="ml-2">▲</span>
-                          <IconButton
-                            className="px-1 py-0"
-                            aria-label="assignment-turned-in"
-                            color="success"
-                            onClick={handleClipboardClick}
-                          >
-                            <AssignmentTurnedInOutlined />
-                          </IconButton>
+                          <span className="px-1 py-0">
+                            <IconButton
+                              style={{ padding: 0 }}
+                              aria-label="assignment-turned-in"
+                              color="success"
+                              onClick={handleClipboardClick}
+                            >
+                              <AssignmentTurnedInOutlined />
+                            </IconButton>
+                          </span>
                           <div>
                             <div className="flex">
                               <a href={post.url} target="_blank">
