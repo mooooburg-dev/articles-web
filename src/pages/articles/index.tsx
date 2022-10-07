@@ -1,7 +1,7 @@
-import { AssignmentTurnedInOutlined, Search } from '@mui/icons-material';
-import { Grid, IconButton, TextField } from '@mui/material';
+import { Search } from '@mui/icons-material';
+import { IconButton, TextField } from '@mui/material';
 import React, { useCallback, useEffect, useState } from 'react';
-import ArticleItem from 'src/components/articles/article-item';
+import ArticleList from 'src/components/articles/article-list';
 
 const url: string = 'https://jsonplaceholder.typicode.com/posts';
 
@@ -33,8 +33,6 @@ export default function Articles() {
   const handleSearchBlur = () => {
     setSearchMode(false);
   };
-
-  const handleClipboardClick = () => {};
 
   useEffect(() => {
     if (searchMode) {
@@ -73,21 +71,7 @@ export default function Articles() {
             </div>
           )}
         </div>
-        {data && (
-          <div className="articles-data mt-4">
-            <ul className=":not(:first-child)::mt-10">
-              {data.map((post: any, idx: number) => (
-                <li className={'mt-4 first:mt-4'} key={idx}>
-                  <ArticleItem
-                    post={post}
-                    idx={idx}
-                    onClipboadClick={handleClipboardClick}
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        <ArticleList items={data} />
       </div>
     </div>
   );
