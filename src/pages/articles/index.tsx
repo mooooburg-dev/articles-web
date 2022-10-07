@@ -81,10 +81,10 @@ export default function Articles() {
                     <Grid item xs={12} sm={12}>
                       <div key={post.id} className="flex-row text-gray-400">
                         <div className="flex items-start">
-                          <span className="">{idx}.</span>
+                          <span>{idx}.</span>
                           <span className="ml-2">▲</span>
                           <IconButton
-                            className="pt-0 pr-1"
+                            className="px-1 py-0"
                             aria-label="assignment-turned-in"
                             color="success"
                             onClick={handleClipboardClick}
