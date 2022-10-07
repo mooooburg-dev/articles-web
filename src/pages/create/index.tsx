@@ -4,7 +4,7 @@ import React from 'react';
 export default function Create() {
   return (
     <div>
-      <h2 className="mb-4">Create</h2>
+      <h2 className="mb-4">Add Article</h2>
       <Grid container spacing={2}>
         <Grid
           container

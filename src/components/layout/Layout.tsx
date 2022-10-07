@@ -1,4 +1,3 @@
-import { Grid } from '@mui/material';
 import React from 'react';
 import Bottom from './Bottom';
 import Content from './Content';
