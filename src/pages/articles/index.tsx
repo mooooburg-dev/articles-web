@@ -7,28 +7,38 @@ import SearchContainer from 'src/components/articles/search-container';
 const url: string = 'https://jsonplaceholder.typicode.com/posts';
 
 export default function Articles() {
+  const [searchTag, setSearchTag] = useState<string>('Frontend');
   const [data, setData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const handleClick = () => {
+  const fetchData = (tag: string) => {
+    setData(null);
     fetch(url)
       .then((response) => {
         return response.json();
       })
       .then((json) => {
-        setData(json);
+        setData(json.sort(() => Math.random() - 0.5));
       })
       .catch((error) => setError(`error: ${error}`));
   };
 
+  const handleChange = (e: any) => {
+    setSearchTag(e.target.value);
+  };
+
   useEffect(() => {
-    handleClick();
+    fetchData(searchTag);
   }, []);
 
   return (
     <div className="articles vh-1">
       <div className="inner ">
-        <SearchContainer />
+        <SearchContainer
+          searchTag={searchTag}
+          onSearch={fetchData}
+          onChange={handleChange}
+        />
         <ArticleList items={data} />
       </div>
     </div>
