@@ -1,10 +1,11 @@
 import { Search } from '@mui/icons-material';
 import { IconButton, TextField } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React, { KeyboardEvent, useEffect, useRef, useState } from 'react';
 
 export default function SearchContainer() {
   const [searchMode, setSearchMode] = useState<boolean>(false);
-  const [searchTag, setSearchTag] = useState<string>('');
+  const [searchTag, setSearchTag] = useState<string>('FrontEnd');
+  const tagInputRef = useRef<HTMLInputElement>(null);
 
   const handleSearchTagChange = (e: any) => {
     setSearchTag(e.target.value);
@@ -18,8 +19,15 @@ export default function SearchContainer() {
     setSearchMode(false);
   };
 
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      setSearchMode(!searchMode);
+    }
+  };
+
   useEffect(() => {
     if (searchMode) {
+      tagInputRef.current?.focus();
     } else {
     }
   }, [searchMode]);
@@ -31,18 +39,20 @@ export default function SearchContainer() {
           <TextField
             label="Search Tag"
             id="outlined-size-small"
-            defaultValue="Front-end"
+            defaultValue={searchTag}
             size="small"
             onBlur={handleSearchBlur}
             onChange={handleSearchTagChange}
+            onKeyDown={handleKeyDown}
+            inputRef={tagInputRef}
           />
-          <IconButton>
-            <Search fontSize="large" onClick={handleSearchClick} />
+          <IconButton onClick={handleSearchClick}>
+            <Search fontSize="large" />
           </IconButton>
         </div>
       ) : (
         <div className="flex items-center" onClick={handleSearchClick}>
-          <h2># Front-end</h2>
+          <h2># {searchTag}</h2>
           <IconButton aria-label="delete">
             <Search fontSize="large" />
           </IconButton>
