@@ -84,7 +84,7 @@ export default function Articles() {
                           <span className="">{idx}.</span>
                           <span className="ml-2 ">▲</span>
                           <IconButton
-                            className="pt-0 pr-1"
+                            style={{ paddingTop: 0 }}
                             aria-label="assignment-turned-in"
                             color="success"
                             onClick={handleClipboardClick}
