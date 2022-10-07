@@ -12,7 +12,6 @@ export default function Articles() {
   const [error, setError] = useState<string | null>(null);
 
   const fetchData = (tag: string) => {
-    setData(null);
     fetch(url)
       .then((response) => {
         return response.json();
