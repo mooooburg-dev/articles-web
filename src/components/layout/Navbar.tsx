@@ -24,20 +24,12 @@ export default function Navbar({ children, ...args }: Props) {
             </IconButton>
           </Grid>
           <Grid item className={'flex items-center justify-end'}>
-            <ul className="flex justify-end text-sm font-bold child:mx-2">
+            <ul className="flex justify-end text-xs font-bold child:mx-2">
               <li>
-                <Link href={'/articles'}>
-                  <a>
-                    <span>ARTICLES</span>
-                  </a>
-                </Link>
+                <Link href={'/articles'}>ARTICLES</Link>
               </li>
               <li>
-                <Link href={'/clipboard'}>
-                  <a>
-                    <span>CLIPBOARD</span>
-                  </a>
-                </Link>
+                <Link href={'/clipboard'}>CLIPBOARD</Link>
               </li>
             </ul>
             <Link href={'/login'}>
