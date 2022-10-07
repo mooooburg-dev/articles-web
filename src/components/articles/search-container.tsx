@@ -2,33 +2,38 @@ import { Search } from '@mui/icons-material';
 import { IconButton, TextField } from '@mui/material';
 import React, { KeyboardEvent, useEffect, useRef, useState } from 'react';
 
-export default function SearchContainer() {
+type Props = {
+  searchTag: string;
+  onSearch: (tag: string) => void;
+  onChange: (e: any) => void;
+};
+
+const SearchContainer = ({ searchTag, onSearch, onChange }: Props) => {
   const [searchMode, setSearchMode] = useState<boolean>(false);
-  const [searchTag, setSearchTag] = useState<string>('FrontEnd');
   const tagInputRef = useRef<HTMLInputElement>(null);
 
-  const handleSearchTagChange = (e: any) => {
-    setSearchTag(e.target.value);
-  };
-
   const handleSearchClick = () => {
+    if (searchMode) {
+      if (searchTag !== '') {
+        onSearch(searchTag);
+      } else {
+        console.log('태그를 확인하세요');
+      }
+    } else {
+    }
     setSearchMode(!searchMode);
   };
 
-  const handleSearchBlur = () => {
-    setSearchMode(false);
-  };
-
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && searchTag !== '') {
       setSearchMode(!searchMode);
+      onSearch(searchTag);
     }
   };
 
   useEffect(() => {
     if (searchMode) {
       tagInputRef.current?.focus();
-    } else {
     }
   }, [searchMode]);
 
@@ -41,8 +46,7 @@ export default function SearchContainer() {
             id="outlined-size-small"
             defaultValue={searchTag}
             size="small"
-            onBlur={handleSearchBlur}
-            onChange={handleSearchTagChange}
+            onChange={onChange}
             onKeyDown={handleKeyDown}
             inputRef={tagInputRef}
           />
@@ -51,7 +55,7 @@ export default function SearchContainer() {
           </IconButton>
         </div>
       ) : (
-        <div className="flex items-center" onClick={handleSearchClick}>
+        <div className="inline-flex items-center" onClick={handleSearchClick}>
           <h2># {searchTag}</h2>
           <IconButton aria-label="delete">
             <Search fontSize="large" />
@@ -60,4 +64,6 @@ export default function SearchContainer() {
       )}
     </div>
   );
-}
+};
+
+export default SearchContainer;
