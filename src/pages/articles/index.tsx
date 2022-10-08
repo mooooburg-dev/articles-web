@@ -17,6 +17,7 @@ export default function Articles() {
         return response.json();
       })
       .then((json) => {
+        // 데이터 섞기
         setData(json.sort(() => Math.random() - 0.5));
       })
       .catch((error) => setError(`error: ${error}`));
