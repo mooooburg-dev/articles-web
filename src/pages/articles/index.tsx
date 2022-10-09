@@ -1,5 +1,6 @@
 import { Search } from '@mui/icons-material';
 import { IconButton, TextField } from '@mui/material';
+import { GetStaticProps, GetStaticPropsContext } from 'next';
 import React, { useCallback, useEffect, useState } from 'react';
 import ArticleList from 'src/components/articles/article-list';
 import SearchContainer from 'src/components/articles/search-container';
@@ -44,3 +45,14 @@ export default function Articles() {
     </div>
   );
 }
+
+// TODO: getStaticProps 적용
+export const getStaticProps: GetStaticProps = async ({
+  params,
+}: GetStaticPropsContext) => {
+  return {
+    props: {
+      // host: process.env
+    },
+  };
+};
