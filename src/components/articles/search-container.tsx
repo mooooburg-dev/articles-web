@@ -1,11 +1,17 @@
 import { Search } from '@mui/icons-material';
 import { IconButton, TextField } from '@mui/material';
-import React, { KeyboardEvent, useEffect, useRef, useState } from 'react';
+import React, {
+  ChangeEvent,
+  KeyboardEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 type Props = {
   searchTag: string;
   onSearch: (tag: string) => void;
-  onChange: (e: any) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
 const SearchContainer = ({ searchTag, onSearch, onChange }: Props) => {
