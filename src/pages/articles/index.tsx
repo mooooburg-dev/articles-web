@@ -4,7 +4,11 @@ import ArticleList from 'src/components/articles/article-list';
 import SearchContainer from 'src/components/articles/search-container';
 import { getAllDatas } from 'src/helper/api-utils';
 
-export default function Articles(props: any) {
+type Props = {
+  articles: any[];
+};
+
+export default function Articles({ articles }: Props) {
   const [searchTag, setSearchTag] = useState<string>('Frontend');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +23,7 @@ export default function Articles(props: any) {
           onSearch={getAllDatas}
           onChange={handleChange}
         />
-        <ArticleList items={props.datas} />
+        <ArticleList items={articles} />
       </div>
     </div>
   );
@@ -27,10 +31,10 @@ export default function Articles(props: any) {
 
 // SSG
 export const getStaticProps: GetStaticProps = async () => {
-  const datas = await getAllDatas();
+  const allArticles = await getAllDatas();
   return {
     props: {
-      datas,
+      articles: allArticles,
     },
     revalidate: 60,
   };
