@@ -1,27 +1,30 @@
+import { GetStaticProps } from 'next';
 import React, { useEffect, useState } from 'react';
+import ArticleList from 'src/components/articles/article-list';
+import { getClipboardDatas } from 'src/helper/api-util';
 
-const url: string = '';
+type Props = {
+  // TODO: API 스키마 픽스 후 Type 재정의
+  articles: any[];
+};
 
-export default function Clipboard() {
-  const [data, setData] = useState<any>(null);
-  const [error, setError] = useState<string | null>(null);
-
-  const getClipboardDatas = () => {
-    fetch(url)
-      .then((response) => {
-        return response.json();
-      })
-      .then((json) => {
-        setData(json);
-      })
-      .catch((error) => setError(`error: ${error}`));
-  };
-
-  const init = () => {
-    console.log('init');
-  };
-
-  useEffect(init, []);
-
-  return <h2>Clipboard</h2>;
+export default function Clipboard({ articles }: Props) {
+  return (
+    <div className="articles vh-1">
+      <h2>Clipboard</h2>
+      <div className="inner ">
+        <ArticleList items={articles} />
+      </div>
+    </div>
+  );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const clipArticles = await getClipboardDatas();
+  return {
+    props: {
+      articles: clipArticles,
+    },
+    revalidate: 60,
+  };
+};
