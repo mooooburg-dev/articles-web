@@ -16,6 +16,11 @@ export async function getAllDatas() {
 export async function getClipboardDatas() {
   const allDatas = getAllDatas();
 
-  // TODO: 클립보드 데이터 필터 추가
+  // TODO: 클립보드 데이터 필터 조회 추가
   return allDatas;
+}
+
+// 클립보드 저장
+export async function addClipboard() {
+  return {};
 }
