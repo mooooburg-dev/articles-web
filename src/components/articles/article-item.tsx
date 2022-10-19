@@ -1,21 +1,18 @@
 import { AssignmentTurnedInOutlined } from '@mui/icons-material';
 import { Grid, IconButton } from '@mui/material';
+import { ArticleType } from 'src/types/itemType';
 
 type Props = {
-  post: {
-    id: number;
-    title: string;
-    url: string;
-  };
+  article: ArticleType;
   idx: number;
   onClipboadClick: () => void;
 };
 
-function ArticleItem({ post, idx, onClipboadClick }: Props) {
+function ArticleItem({ article, idx, onClipboadClick }: Props) {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={12}>
-        <div key={post.id} className="flex-row text-gray-400">
+        <div key={article.id} className="flex-row text-gray-400">
           <div className="flex items-start">
             <span>{idx}.</span>
             <span className="ml-2">▲</span>
@@ -31,8 +28,8 @@ function ArticleItem({ post, idx, onClipboadClick }: Props) {
             </span>
             <div>
               <div className="flex">
-                <a href={post.url} target="_blank">
-                  <p className="font-bold text-gray-800">{post.title}</p>
+                <a href={article.url} target="_blank">
+                  <p className="font-bold text-gray-800">{article.title}</p>
                 </a>
                 <span className="ml-2 ">(naver.com)</span>
               </div>

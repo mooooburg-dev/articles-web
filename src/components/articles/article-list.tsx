@@ -1,11 +1,13 @@
 import { Fragment } from 'react';
+import { ArticleType } from 'src/types/itemType';
 import ArticleItem from './article-item';
 
 type Props = {
-  items: any[];
+  items: ArticleType[];
 };
 
 export default function ArticleList({ items }: Props) {
+  // TODO: 클립보드 저장
   const handleClipboardClick = () => {};
 
   return (
@@ -16,7 +18,7 @@ export default function ArticleList({ items }: Props) {
             {items.map((article: any, idx: number) => (
               <li className={'mt-4 first:mt-4'} key={idx}>
                 <ArticleItem
-                  post={article}
+                  article={article}
                   idx={idx}
                   onClipboadClick={handleClipboardClick}
                 />
