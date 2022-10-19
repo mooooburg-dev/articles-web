@@ -1,6 +1,6 @@
 import { AssignmentTurnedInOutlined } from '@mui/icons-material';
 import { Grid, IconButton } from '@mui/material';
-import { ArticleType } from 'src/types/itemType';
+import { ArticleType } from 'src/types';
 
 type Props = {
   article: ArticleType;

@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { ArticleType } from 'src/types/itemType';
+import { ArticleType } from 'src/types';
 import ArticleItem from './article-item';
 
 type Props = {
