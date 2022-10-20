@@ -1,5 +1,5 @@
-const url: string = 'https://jsonplaceholder.typicode.com/posts';
-// const url: string = 'http://localhost:8090/api/articles';
+// const url: string = 'https://jsonplaceholder.typicode.com/posts';
+const url: string = 'http://localhost:8090/api/articles';
 
 export async function getAllDatas() {
   const response = await fetch(url, {

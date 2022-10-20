@@ -1,11 +1,12 @@
 import { GetStaticProps } from 'next';
 import React, { useEffect, useState } from 'react';
 import ArticleList from 'src/components/articles/article-list';
-import { getClipboardDatas } from 'src/helper/api-util';
+import { getAllDatas } from 'src/helper/api-util';
+import { ArticleType } from 'src/types';
 
 type Props = {
   // TODO: API 스키마 픽스 후 Type 재정의
-  articles: any[];
+  articles: ArticleType[];
 };
 
 export default function Clipboard({ articles }: Props) {
@@ -20,10 +21,11 @@ export default function Clipboard({ articles }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const clipArticles = await getClipboardDatas();
+  // TODO: 타입수정
+  const articles: any = await getAllDatas();
   return {
     props: {
-      articles: clipArticles,
+      articles: articles.result,
     },
     revalidate: 60,
   };
