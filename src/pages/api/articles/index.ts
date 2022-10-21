@@ -5,14 +5,14 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  // articles 조회
+  // articles 전체 조회
   if (req.method === 'GET') {
     const result: any[] = await excuteQuery({
-      query: 'SELECT * FROM pantagruel.CLIP_ARTICLE',
+      query: 'SELECT * FROM pantagruel.CLIP_ARTICLE;',
     });
 
     const parseData = result.map((item) => {
-      return { id: item.ID, title: item.TITLE };
+      return { id: item.ID, title: item.TITLE, url: item.URL };
     });
 
     res.status(200).json({ result: parseData });
@@ -20,5 +20,23 @@ export default async function handler(
 
   // article 추가
   if (req.method === 'POST') {
+  }
+
+  // article 단일 수정
+  if (req.method === 'PATCH') {
+    const { id, title, url } = JSON.parse(req.body);
+    const result: any[] = await excuteQuery({
+      query: `UPDATE pantagruel.CLIP_ARTICLE SET TITLE="${title}", URL="${url}" WHERE ID="${id}";
+      SELECT * FROM pantagruel.CLIP_ARTICLE WHERE ID="${id}";`,
+    });
+
+    const resultData = { ...result[1][0] };
+    const parseData = {
+      id: resultData.ID,
+      title: resultData.TITLE,
+      url: resultData.URL,
+    };
+
+    if (result) res.status(200).json({ result: parseData });
   }
 }
