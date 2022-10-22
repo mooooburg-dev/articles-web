@@ -1,7 +1,7 @@
 import { ArticleType } from 'src/types';
 
 // const url: string = 'https://jsonplaceholder.typicode.com/posts';
-const url: string = `${process.env.NEXT_PUBLIC_API_URL}/api/articles`;
+const url: string = `${process.env.VERCEL_URL}/api/articles`;
 
 // article 전체 조회
 export async function getAllDatas() {
