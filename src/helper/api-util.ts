@@ -13,7 +13,7 @@ const url: string = `${
 // article 전체 조회
 export async function getAllDatas() {
   const response = await fetch(url, {
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
     method: 'GET',
   });
   const data = await response.json();
