@@ -20,6 +20,13 @@ export default async function handler(
 
   // article 추가
   if (req.method === 'POST') {
+    const { title, url } = JSON.parse(req.body);
+
+    const result: any[] = await excuteQuery({
+      query: `INSERT pantagruel.CLIP_ARTICLE SET TITLE="${title}", URL="${url}";`,
+    });
+
+    if (result) res.status(200).json({ result: 'success' });
   }
 
   // article 단일 수정
