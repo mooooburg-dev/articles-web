@@ -1,5 +1,5 @@
 import React from 'react';
 
-export default function index() {
+export default function Login() {
   return <h2>Login</h2>;
 }
