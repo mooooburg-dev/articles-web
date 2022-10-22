@@ -3,7 +3,7 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 import ArticleList from 'src/components/articles/article-list';
 import SearchContainer from 'src/components/articles/search-container';
 import { getAllDatas } from 'src/helper/api-util';
-import { ArticleStoreType, useArticleStore } from 'src/store/articleStore';
+import { useArticleStore } from 'src/store/articleStore';
 import { ArticleType } from 'src/types';
 import create from 'zustand';
 
@@ -13,9 +13,7 @@ type Props = {
 };
 
 export default function Articles({ articles }: Props) {
-  const updateArticles = useArticleStore(
-    (state: ArticleStoreType) => state.updateArticles
-  );
+  const updateArticles = useArticleStore((state) => state.updateArticles);
 
   updateArticles && updateArticles(articles);
 
