@@ -13,6 +13,7 @@ const url: string = `${
 // article 전체 조회
 export async function getAllDatas() {
   const response = await fetch(url, {
+    headers: { Accept: 'application/json' },
     method: 'GET',
   });
   const data = await response.json();
@@ -30,6 +31,7 @@ export async function getClipboardDatas() {
 // article 단일 수정
 export async function updateArticle(param: ArticleType) {
   const response = await fetch(url, {
+    headers: { Accept: 'application/json' },
     method: 'PATCH',
     body: JSON.stringify(param),
   });
@@ -42,6 +44,7 @@ export async function updateArticle(param: ArticleType) {
 // article 등록
 export async function createArticle(param: ArticleType) {
   const response = await fetch(url, {
+    headers: { Accept: 'application/json' },
     method: 'POST',
     body: JSON.stringify(param),
   });
@@ -54,6 +57,7 @@ export async function createArticle(param: ArticleType) {
 // 클립보드 저장
 export async function addClipboard(param: ArticleType) {
   const response = await fetch(url, {
+    headers: { Accept: 'application/json' },
     method: 'POST',
     body: JSON.stringify(param),
   });
