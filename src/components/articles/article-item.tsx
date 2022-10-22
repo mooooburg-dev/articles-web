@@ -1,6 +1,10 @@
+import React, { useEffect, useState } from 'react';
 import { AssignmentTurnedInOutlined } from '@mui/icons-material';
 import { Grid, IconButton } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
 import { ArticleType } from 'src/types';
+import { useForm } from 'react-hook-form';
+import ArticleModal from '../layout/ArticleModal';
 
 type Props = {
   article: ArticleType;
@@ -9,10 +13,39 @@ type Props = {
 };
 
 function ArticleItem({ article, idx, onClipboadClick }: Props) {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const [item, setItem] = useState<ArticleType>(article);
+
+  const {
+    register,
+    setValue,
+    getValues,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const handleUpdateArticle = (item: ArticleType) => setItem(item);
+
+  const init = () => {
+    register('title', { value: item.title });
+    register('url', { value: item.url });
+  };
+
+  useEffect(init, []);
+
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={12}>
-        <div key={article.id} className="flex-row text-gray-400">
+        <ArticleModal
+          article={item}
+          isOpen={open}
+          onUpdateArticle={handleUpdateArticle}
+          onClose={handleClose}
+        />
+        <div key={item.id} className="flex-row text-gray-400">
           <div className="flex items-start">
             <span>{idx}.</span>
             <span className="ml-2">▲</span>
@@ -28,10 +61,11 @@ function ArticleItem({ article, idx, onClipboadClick }: Props) {
             </span>
             <div>
               <div className="flex">
-                <a href={article.url} target="_blank">
-                  <p className="font-bold text-gray-800">{article.title}</p>
+                <a href={item.url} target="_blank">
+                  <p className="font-bold text-gray-800">{item.title}</p>
                 </a>
                 <span className="ml-2 ">(naver.com)</span>
+                <EditIcon onClick={handleOpen} />
               </div>
               <div className="flex-row text-sm">
                 <span className="">16 hits</span>

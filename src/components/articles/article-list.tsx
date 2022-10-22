@@ -1,6 +1,8 @@
 import { Fragment } from 'react';
 import { ArticleType } from 'src/types';
 import ArticleItem from './article-item';
+import create from 'zustand';
+import { useArticleStore } from 'src/store/articleStore';
 
 type Props = {
   items: ArticleType[];
@@ -10,12 +12,17 @@ export default function ArticleList({ items }: Props) {
   // TODO: 클립보드 저장
   const handleClipboardClick = () => {};
 
+  const { articles } = useArticleStore((state: any) => state);
+
+  console.log('----');
+  console.log(articles);
+
   return (
     <Fragment>
-      {items && (
+      {articles && (
         <div className="articles-data mt-4">
           <ul className=":not(:first-child)::mt-10">
-            {items.map((article: any, idx: number) => (
+            {articles.map((article: any, idx: number) => (
               <li className={'mt-4 first:mt-4'} key={idx}>
                 <ArticleItem
                   article={article}
