@@ -4,10 +4,11 @@ import Link from 'next/link';
 import React from 'react';
 
 type Props = {
+  onCreateClick: () => void;
   children?: any;
 };
 
-export default function Navbar({ children, ...args }: Props) {
+export default function Navbar({ onCreateClick, children, ...args }: Props) {
   return (
     <div className={`z-10 w-full bg-teal-400`}>
       <div
@@ -42,11 +43,15 @@ export default function Navbar({ children, ...args }: Props) {
                 <Settings />
               </IconButton>
             </Link>
-            <Link href={'/create'}>
-              <IconButton color="inherit" component="span">
-                <Create />
-              </IconButton>
-            </Link>
+            {/* <Link href={'/create'}> */}
+            <IconButton
+              color="inherit"
+              component="span"
+              onClick={onCreateClick}
+            >
+              <Create />
+            </IconButton>
+            {/* </Link> */}
           </Grid>
         </Grid>
       </div>
