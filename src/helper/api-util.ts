@@ -2,7 +2,6 @@ import { ArticleType } from 'src/types';
 
 // const url: string = 'https://jsonplaceholder.typicode.com/posts';
 const url: string = `${process.env.NEXT_PUBLIC_API_URL}/api/articles`;
-const clipboard_url: string = `${process.env.NEXT_PUBLIC_API_URL}/api/clipboard`;
 
 // article 전체 조회
 export async function getAllDatas() {
