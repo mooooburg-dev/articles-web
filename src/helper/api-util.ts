@@ -1,9 +1,12 @@
 import { ArticleType } from 'src/types';
 
 // const url: string = 'https://jsonplaceholder.typicode.com/posts';
+console.log(
+  `process.env.NEXT_PUBLIC_VERCEL_URL: ${process.env.NEXT_PUBLIC_VERCEL_URL}`
+);
 const url: string = `${
   process.env.NEXT_PUBLIC_VERCEL_URL
-    ? process.env.NEXT_PUBLIC_VERCEL_URL
+    ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
     : process.env.NEXT_PUBLIC_API_URL
 }/api/articles`;
 
