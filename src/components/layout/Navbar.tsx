@@ -1,5 +1,5 @@
 import { Create, Login, Menu, Settings } from '@mui/icons-material';
-import { Button, Grid, IconButton } from '@mui/material';
+import { Grid, IconButton } from '@mui/material';
 import Link from 'next/link';
 import React from 'react';
 
@@ -43,7 +43,6 @@ export default function Navbar({ onCreateClick, children, ...args }: Props) {
                 <Settings />
               </IconButton>
             </Link>
-            {/* <Link href={'/create'}> */}
             <IconButton
               color="inherit"
               component="span"
@@ -51,7 +50,6 @@ export default function Navbar({ onCreateClick, children, ...args }: Props) {
             >
               <Create />
             </IconButton>
-            {/* </Link> */}
           </Grid>
         </Grid>
       </div>
