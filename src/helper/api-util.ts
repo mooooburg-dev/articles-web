@@ -1,7 +1,8 @@
 import { ArticleType } from 'src/types';
 
 // const url: string = 'https://jsonplaceholder.typicode.com/posts';
-const url: string = 'http://localhost:8090/api/articles';
+const url: string = `${process.env.BASE_URL}/api/articles`;
+const clipboard_url: string = `${process.env.BASE_URL}/api/clipboard`;
 
 // article 전체 조회
 export async function getAllDatas() {
@@ -22,7 +23,7 @@ export async function getClipboardDatas() {
 
 // article 단일 수정
 export async function updateArticle(param: ArticleType) {
-  const response = await fetch('http://localhost:8090/api/articles', {
+  const response = await fetch(url, {
     method: 'PATCH',
     body: JSON.stringify(param),
   });
@@ -32,8 +33,26 @@ export async function updateArticle(param: ArticleType) {
   return data;
 }
 
+// article 등록
+export async function createArticle(param: ArticleType) {
+  const response = await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(param),
+  });
+
+  const data = await response.json();
+
+  return data;
+}
+
 // 클립보드 저장
-export async function addClipboard() {
-  const response = fetch(url, { method: 'POST' });
-  return {};
+export async function addClipboard(param: ArticleType) {
+  const response = await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(param),
+  });
+
+  const data = await response.json();
+
+  return data;
 }
