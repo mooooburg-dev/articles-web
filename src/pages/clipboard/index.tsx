@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ArticleList from 'src/components/articles/article-list';
 import { getAllDatas } from 'src/helper/api-util';
 import { ArticleType } from 'src/types';
