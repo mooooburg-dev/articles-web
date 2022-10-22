@@ -20,13 +20,13 @@ export default function Clipboard({ articles }: Props) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  // TODO: 타입수정
-  const articles: any = await getAllDatas();
-  return {
-    props: {
-      articles: articles.result,
-    },
-    revalidate: 60,
-  };
-};
+// export const getStaticProps: GetStaticProps = async () => {
+//   // TODO: 타입수정
+//   const articles: any = await getAllDatas();
+//   return {
+//     props: {
+//       articles: articles.result,
+//     },
+//     revalidate: 60,
+//   };
+// };
