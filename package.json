@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "NEXT_PUBLIC_API_MOCKING=enabled next dev -p 8090",
-    "build": "NEXT_PUBLIC_MODE=DEV NEXT_PUBLIC_API_URL=https://articles-web.vercel.app next build --no-lint",
+    "build": "next build --no-lint",
     "start": "next start",
     "lint": "next lint"
   },
