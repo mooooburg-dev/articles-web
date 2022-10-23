@@ -1,5 +1,5 @@
 import { rest } from 'msw';
-import articles from './datas/article';
+import articles from 'https://jsonplaceholder.typicode.com/posts';
 
 export const handlers = [
   // rest.get('/login', async (req, res, ctx) => {
@@ -13,7 +13,7 @@ export const handlers = [
   //   );
   // }),
   rest.get(
-    'https://jsonplaceholder.typicode.com/posts',
+    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/articles`,
     async (req, res, ctx) => {
       return res(ctx.json(articles));
     }
