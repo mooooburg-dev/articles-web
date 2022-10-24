@@ -63,7 +63,7 @@ const SearchContainer = ({ searchTag, onSearch, onChange }: Props) => {
       ) : (
         <div className="inline-flex items-center" onClick={handleSearchClick}>
           <h2># {searchTag}</h2>
-          <IconButton aria-label="delete">
+          <IconButton>
             <Search fontSize="large" />
           </IconButton>
         </div>
