@@ -51,6 +51,23 @@ export async function createArticle(param: ArticleType) {
   return data;
 }
 
+type DeleteArticleType = {
+  id: number;
+};
+export async function deleteArticle(param: DeleteArticleType) {
+  try {
+    const response = await fetch(url, {
+      method: 'DELETE',
+      body: JSON.stringify(param),
+    });
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return { error };
+  }
+}
+
 // 클립보드 저장
 export async function addClipboard(param: ArticleType) {
   const response = await fetch(url, {

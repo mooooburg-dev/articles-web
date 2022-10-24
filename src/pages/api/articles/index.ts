@@ -29,6 +29,17 @@ export default async function handler(
     if (result) res.status(200).json({ result: 'success' });
   }
 
+  // article 삭제
+  if (req.method === 'DELETE') {
+    const { id } = JSON.parse(req.body);
+
+    const result: any[] = await excuteQuery({
+      query: `DELETE FROM pantagruel.CLIP_ARTICLE WHERE ID="${id}";`,
+    });
+
+    if (result) res.status(200).json({ result: 'success' });
+  }
+
   // article 단일 수정
   if (req.method === 'PATCH') {
     const { id, title, url } = JSON.parse(req.body);
