@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { AssignmentTurnedInOutlined } from '@mui/icons-material';
 import { Grid, IconButton } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
 import { ArticleType } from 'src/types';
 import { useForm } from 'react-hook-form';
 import ArticleModal from '../layout/ArticleModal';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { deleteArticle, getAllDatas } from 'src/helper/api-util';
+import { useArticleStore } from 'src/store/articleStore';
 
 type Props = {
   article: ArticleType;
@@ -13,6 +16,7 @@ type Props = {
 };
 
 function ArticleItem({ article, idx, onClipboadClick }: Props) {
+  const { updateArticles } = useArticleStore((state: any) => state);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -20,14 +24,24 @@ function ArticleItem({ article, idx, onClipboadClick }: Props) {
 
   const {
     register,
-    setValue,
-    getValues,
-    handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
   const handleUpdateArticle = (item: ArticleType) => setItem(item);
+
+  const handleDeleteClick = async () => {
+    const response = await deleteArticle({ id: item.id! });
+
+    if (response) {
+      updateArticleList();
+    }
+  };
+
+  const updateArticleList = async () => {
+    const response = await getAllDatas();
+    const data = response.result;
+    updateArticles(data);
+  };
 
   const init = () => {
     register('title', { value: item.title });
@@ -47,25 +61,34 @@ function ArticleItem({ article, idx, onClipboadClick }: Props) {
         />
         <div key={item.id} className="flex-row text-gray-400">
           <div className="flex items-start">
-            <span>{idx}.</span>
-            <span className="ml-2">▲</span>
-            <span className="px-1 py-0">
-              <IconButton
-                style={{ padding: 0 }}
-                aria-label="assignment-turned-in"
-                color="success"
-                onClick={onClipboadClick}
-              >
-                <AssignmentTurnedInOutlined />
-              </IconButton>
-            </span>
+            <div className="mt-1">
+              <span>{idx}.</span>
+              <span className="ml-2">▲</span>
+              <span className="px-1 py-0">
+                <IconButton
+                  style={{ padding: 0 }}
+                  aria-label="assignment-turned-in"
+                  color="success"
+                  onClick={onClipboadClick}
+                >
+                  <AssignmentTurnedInOutlined />
+                </IconButton>
+              </span>
+            </div>
             <div>
-              <div className="flex">
+              <div className="flex items-center">
                 <a href={item.url} target="_blank">
                   <p className="font-bold text-gray-800">{item.title}</p>
                 </a>
-                <span className="ml-2 ">(naver.com)</span>
-                <EditIcon onClick={handleOpen} />
+                <span className="ml-2 ">{item.url}</span>
+                <div>
+                  <IconButton onClick={handleOpen}>
+                    <EditIcon fontSize="small" />
+                  </IconButton>
+                  <IconButton onClick={handleDeleteClick}>
+                    <DeleteIcon fontSize="small" />
+                  </IconButton>
+                </div>
               </div>
               <div className="flex-row text-sm">
                 <span className="">16 hits</span>
