@@ -14,9 +14,6 @@ export default function ArticleList({ items }: Props) {
 
   const { articles } = useArticleStore((state: any) => state);
 
-  console.log('----');
-  console.log(articles);
-
   return (
     <Fragment>
       {articles && (
