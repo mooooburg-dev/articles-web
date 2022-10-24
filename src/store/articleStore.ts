@@ -8,5 +8,8 @@ export interface ArticleStoreType {
 
 export const useArticleStore = create<ArticleStoreType>((set) => ({
   articles: [],
-  updateArticles: (items: ArticleType[]) => set(() => ({ articles: items })),
+  updateArticles: (items: ArticleType[]) => {
+    set({ articles: [] });
+    set({ articles: items });
+  },
 }));
