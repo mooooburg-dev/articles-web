@@ -27,21 +27,25 @@ export default function Navbar({ onCreateClick, children, ...args }: Props) {
           <Grid item className={'flex items-center justify-end'}>
             <ul className="flex justify-end text-xs font-bold child:mx-2">
               <li>
-                <Link href={'/articles'}>ARTICLES</Link>
+                <Link href="/articles">ARTICLES</Link>
               </li>
               <li>
-                <Link href={'/clipboard'}>CLIPBOARD</Link>
+                <Link href="/clipboard">CLIPBOARD</Link>
               </li>
             </ul>
-            <Link href={'/login'}>
-              <IconButton color="inherit" component="span">
-                <Login />
-              </IconButton>
+            <Link href="/login">
+              <a>
+                <IconButton color="inherit" component="span">
+                  <Login />
+                </IconButton>
+              </a>
             </Link>
-            <Link href={'/settings'}>
-              <IconButton color="inherit" component="span">
-                <Settings />
-              </IconButton>
+            <Link href="/settings">
+              <a>
+                <IconButton color="inherit" component="span">
+                  <Settings />
+                </IconButton>
+              </a>
             </Link>
             <IconButton
               color="inherit"
