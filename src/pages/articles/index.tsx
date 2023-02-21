@@ -1,10 +1,10 @@
-import { GetStaticProps } from 'next';
 import React, { ChangeEvent, useState } from 'react';
-import ArticleList from 'src/components/articles/article-list';
-import SearchContainer from 'src/components/articles/search-container';
-import { getAllDatas } from 'src/helper/api-util';
-import { useArticleStore } from 'src/store/articleStore';
-import { ArticleType } from 'src/types';
+import { GetStaticProps } from 'next';
+import ArticleList from '~/components/articles/article-list';
+import SearchContainer from '~/components/articles/search-container';
+import { getAllDatas } from '~/helper/api-util';
+import { useArticleStore } from '~/store/articleStore';
+import { ArticleType } from '~/types';
 
 type Props = {
   // TODO: API 스키마 픽스 후 Type 재정의
