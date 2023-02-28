@@ -5,6 +5,7 @@ import SearchContainer from '~/components/articles/search-container';
 import { getAllDatas } from '~/helper/api-util';
 import { useArticleStore } from '~/store/articleStore';
 import { ArticleType } from '~/types';
+import excuteQuery from '~/lib/db';
 
 type Props = {
   // TODO: API 스키마 픽스 후 Type 재정의
@@ -38,11 +39,21 @@ export default function Articles({ articles }: Props) {
 
 // SSG
 export const getStaticProps: GetStaticProps = async () => {
-  const allArticles = await getAllDatas();
+  // const allArticles = await getAllDatas();
+  // articles 전체 조회
+  const result: any[] = await excuteQuery({
+    query: 'SELECT * FROM pantagruel.CLIP_ARTICLE;',
+  });
+
+  const parseData = result.map((item) => {
+    return { id: item.ID, title: item.TITLE, url: item.URL };
+  });
+
+  // res.status(200).json({ result: parseData });
 
   return {
     props: {
-      articles: allArticles.result,
+      articles: parseData,
     },
     revalidate: 60,
   };
