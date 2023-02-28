@@ -1,13 +1,19 @@
 // db.js
 import mysql from 'serverless-mysql';
 
+// MYSQL_HOST=pantagruel.cafe24.com
+// MYSQL_PORT=3306
+// MYSQL_DATABASE=pantagruel
+// MYSQL_USER=pantagruel
+// MYSQL_PASSWORD=^pass0912_
+
 const db = mysql({
   config: {
-    host: process.env.MYSQL_HOST,
+    host: 'pantagruel.cafe24.com',
     port: 3306, //process.env.MYSQL_PORT,
-    database: process.env.MYSQL_DATABASE,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
+    database: 'pantagruel',
+    user: 'pantagruel',
+    password: '^pass0912_',
     multipleStatements: true,
     typeCast: function (field, next) {
       if (field) {
