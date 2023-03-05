@@ -5,7 +5,6 @@ import SearchContainer from '~/components/articles/search-container';
 import { getAllDatas } from '~/helper/api-util';
 import { useArticleStore } from '~/store/articleStore';
 import { ArticleType } from '~/types';
-import excuteQuery from '~/lib/db';
 
 type Props = {
   // TODO: API 스키마 픽스 후 Type 재정의
