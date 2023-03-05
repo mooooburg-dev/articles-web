@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "NEXT_PUBLIC_API_MOCKING=enabled&NEXT_PUBLIC_API_URL=http://localhost:3000 next dev",
     "build": "NEXT_PUBLIC_API_URL=http://localhost:3000 next build --no-lint",
-    "start": "NEXT_PUBLIC_API_URL=http://localhost:3000 next start",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
