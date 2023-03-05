@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 import { ArticleType } from 'src/types';
 import ArticleItem from './article-item';
-import create from 'zustand';
 import { useArticleStore } from 'src/store/articleStore';
 
 type Props = {
