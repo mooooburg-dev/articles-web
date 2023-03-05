@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from 'react';
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import ArticleList from '~/components/articles/article-list';
 import SearchContainer from '~/components/articles/search-container';
 import { getAllDatas } from '~/helper/api-util';
@@ -36,14 +36,13 @@ export default function Articles({ articles }: Props) {
   );
 }
 
-// SSG
-export const getStaticProps: GetStaticProps = async () => {
+// SSR
+export const getServerSideProps: GetServerSideProps = async () => {
   const allArticles = await getAllDatas();
 
   return {
     props: {
       articles: allArticles.result,
     },
-    revalidate: 60,
   };
 };
