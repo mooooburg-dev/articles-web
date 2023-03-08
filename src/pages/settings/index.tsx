@@ -4,10 +4,12 @@ import { addDoc, collection } from '@firebase/firestore';
 
 export default function Settings() {
   const handleClick = async () => {
+    console.log(process.env.NEXT_APP_API_KEY);
     try {
       const docRef = await addDoc(collection(db, 'articles'), {
         title: 'addDocTest',
       });
+      console.log('document written with ID: ', docRef.id);
     } catch (e) {
       console.error('Error adding document: ', e);
     }
